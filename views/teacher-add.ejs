@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Teacher Add Data</title>
+  </head>
+  <body>
+    <h1 align="center">Add Teacher Data</h1>
+    <div style="text-align:center">
+      <a href="/teachers">show all data</a>
+    </div>
+    <form action="/teachers/add" method="POST">
+      First name: <br/>
+      <input type="text" name="first_name"> <br/>
+      Last name: <br/>
+      <input type="text" name="last_name"> <br/> <br/>
+      <input type="submit" onclick="return alert('Data added!')" value="Add Teacher"/>
+    </form>
+  </body>
+</html>
