@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>
+      Data Teachers
+    </title>
+    <script>
+      <% if(alert !== undefined && alert !== '') { %>
+        alert("<%= alert %>")
+      <% }%>
+    </script>
+  </head>
+  <body>
+    <h2>Teachers Data</h2>
+    <a href="/teachers/add">add Teacher</a>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Firt Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Options</th>
+      </tr>
+      <% for(let i = 0; i < Teachers.length; i++){ %>
+        <tr>
+          <td><%= Teachers[i].id %></td>
+          <td><%= Teachers[i].first_name %></td>
+          <td><%= Teachers[i].last_name %></td>
+          <td><%= Teachers[i].email %></td>
+          <td>
+            <a href="/teachers/edit/<%= Teachers[i].id %>">Edit</a>
+            |
+            <a href="#" onclick="return confirmDel(<%= Teachers[i].id %>)">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+    <script>
+      let confirmDel = function(id){
+        let confirmBox = confirm(`Apakah kamu yakin akan menghapus Data ${id}`)
+        if(confirmBox == true){
+            window.location.href = `/teachers/delete/${id}`;
+        }
+      }
+    </script>
+  </body>
+</html>
