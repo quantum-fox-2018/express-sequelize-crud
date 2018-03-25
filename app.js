@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:false}))
 
-
+//index
 app.get('/', function(req, res) {
   res.render('index');
 })
@@ -16,8 +16,8 @@ app.get('/', function(req, res) {
 app.get('/students', function(req, res){
   db.Student.findAll()
   .then(Students =>{
-      console.log(Students);
-      res.render('students', {data:Students})
+      // console.log(Students);
+      res.render('students', {Students})
   })
   .catch(err =>{
       res.render('students', err)
@@ -25,17 +25,75 @@ app.get('/students', function(req, res){
 
 })
 
-
+//Student Add
 app.get('/students/add', function(req, res){
-  res.render('students/addStudent')
+  let Result = '';
+  res.render('students/addStudent', {Result})
 })
 
-app.get('/students/edit', function(req, res){
-  res.render('students/editStudent')
+app.post('/students/addResult', function(req, res){
+  let studentAddData = req.body;
+  console.log(req.body);
+  db.Student.create(
+    {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      createdAt: new Date(),
+      updateAt: new Date()
+    }
+  )
+  .then(Result =>{
+    let alert = `Data ${Result.first_name} Berhasil di tambahkan`
+    res.render('students/addResult', {alert})
+  })
+  .catch(err =>{
+    console.log(err);
+  })
+
 })
 
-app.get('/students/delete', function(req, res){
-  res.render('students/deleteStudent')
+
+app.get('/students/edit/:studentId', function(req, res){
+  // console.log(req.params.studentId);
+  let studentId = req.params.studentId;
+  db.Student.findOne({where:{id:studentId}})
+  .then(studentData =>{
+    // console.log(Results);
+    res.render('students/editStudent', {studentData})
+  })
+  .catch()
+})
+
+app.post('/students/editResult/:studentId', function(req, res){
+  // console.log(req.body);
+  // console.log(req.params.studentId);
+  let studentId = req.params.studentId;
+  let StudentEditData = req.body;
+  db.Student.update(
+    StudentEditData,
+    {where:{id:studentId}}
+  )
+  .then(()=>{
+    let msg = `Data ${studentId} Berhasil di Edit`
+    res.render('students/editResult', {msg})
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+})
+
+app.get('/students/delete/:studentId', function(req, res){
+  // console.log(req.params.studentId);
+  let studentId = req.params.studentId;
+  db.Student.destroy({where:{id:studentId}})
+  .then(() =>{
+    res.render('students/deleteStudent', {studentId})
+  })
+  .catch(err =>{
+    console.log(err);
+  })
+  // res.render('students/deleteStudent')
 })
 
 
