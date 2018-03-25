@@ -12,6 +12,7 @@
         <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Email</th>
         <th>Options</th>
       </tr>
       <% teachers.forEach(teacher => { %>
@@ -19,6 +20,7 @@
           <th> <%= teacher.id %> </th>
           <th> <%= teacher.first_name %> </th>
           <th> <%= teacher.last_name %> </th>
+          <th> <%= teacher.email %> </th>
           <th> <a href="/teachers/edit/<%=teacher.id%>">Edit</a> | <a href="/teachers/delete/<%=teacher.id%>" onclick="return confirm('Delete this teacher?')">Delete</a></th>
         </tr>
       <% }) %>

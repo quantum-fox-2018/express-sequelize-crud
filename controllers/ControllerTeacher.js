@@ -16,7 +16,8 @@ class ControllerTeacher {
   static add(obj) {
     let teacher = model.Teacher.build({
       first_name: obj.first_name,
-      last_name: obj.last_name
+      last_name: obj.last_name,
+      email: obj.email
     })
     return teacher.save();
   }
@@ -26,7 +27,8 @@ class ControllerTeacher {
     .then(function(teacher) {
       return teacher.update({
         first_name: first_name,
-        last_name: last_name
+        last_name: last_name,
+        email: email
       })
     })
     .catch(err => {

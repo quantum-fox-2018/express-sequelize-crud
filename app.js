@@ -109,7 +109,8 @@ app.get('/teachers/add', function(req, res) {
 app.post('/teachers/add', function(req, res) {
   let attributeTeacher = {
     first_name: req.body.first_name,
-    last_name: req.body.last_name
+    last_name: req.body.last_name,
+    email: req.body.email
   };
   cTeacher.add(attributeTeacher)
   .then((teacher) => {
@@ -137,7 +138,8 @@ app.post('/teachers/edit/:id', function(req, res) {
   let id = req.params.id;
   let first_name = req.body.first_name;
   let last_name = req.body.last_name;
-  cTeacher.update(id, first_name, last_name)
+  let email = req.body.email;
+  cTeacher.update(id, first_name, last_name, email)
   .then(function(teacher) {
     cTeacher.list()
     .then((teachers) => {
