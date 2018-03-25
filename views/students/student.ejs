@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <h1>Students Data</h1>
+
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+        <% for(let i = 0; i <studentData.length; i++){ %>
+          <tr>
+            <td><%=studentData[i].id%></td>
+            <td><%=studentData[i].first_name%></td>
+            <td><%=studentData[i].last_name%></td>
+            <td><%=studentData[i].email%></td>
+          </tr>
+        <% } %>
+
+      </table>
+    </div>
+    
+  </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <h1>Teachers Data</h1>
+
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+        <% for(let i = 0; i <teacherData.length; i++){ %>
+          <tr>
+            <td><%=teacherData[i].id%></td>
+            <td><%=teacherData[i].first_name%></td>
+            <td><%=teacherData[i].last_name%></td>
+            <td><%=teacherData[i].email%></td>
+          </tr>
+        <% } %>
+
+      </table>
+    </div>
+    
+  </div>
+  </div>
+  </body>
+</html>
