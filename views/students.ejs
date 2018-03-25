@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1 style="text-align: center">Students Data</h1>
-    <a href="addStudent.ejs">add student</a>
+    <a href="/students/addStudent">add student</a>
     <table style="width:100%">
         <tr>
             <th>id</th>
@@ -19,7 +19,7 @@
             <th>Email</th>
             <th>Options</th>
         </tr>
-        <% if(studentData.length == undefined){%>
+        <% if(studentData.length != undefined){%>
             <% for(let index =0; index<studentData.length; index++){ %>
                 <tr>
                     <th><%= studentData[index].id%></th>

@@ -97,9 +97,10 @@ app.get('/teachers/deleteTeacher', function(req, res){
 //STUDENTS
 //==================
 app.get('/students', function(req, res){
-    model.Student.findAll({})
+    model.Student.findAll({raw:true})
     .then(function(studentData){
         res.render('students', {studentData});
+        // console.log(studentData)
     })
     .catch(function(err){
         console.log(err);
@@ -111,6 +112,7 @@ app.get('/students/addStudent', function(req, res){
 })
 
 app.post('/students/addNewStudent', function(req, res){
+    console.log(JSON.stringify(req.body));
     model.Student.create({
         first_name: req.body.firstname,
         last_name: req.body.lastname,
@@ -194,7 +196,7 @@ app.get('/subjects/addSubject', function(req, res){
     res.render('addSubject');
 })
 
-app.post('/subjects/addNewSubjects', function(req, res){
+app.post('/subjects/addNewSubject', function(req, res){
     model.Subject.create({
         subject_name: req.body.subjectName
     })
@@ -215,7 +217,7 @@ app.get('/subjects/editSubject', function(req, res){
             id: newId
         }
     })
-    .then(function(studentData){
+    .then(function(subjectData){
         res.render('editSubject', {subjectData});
     })
     .catch(function(err){
