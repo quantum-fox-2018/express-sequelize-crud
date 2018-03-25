@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <h1>Subjects Data</h1>
+
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Subject</th>
+        </tr>
+        <% for(let i = 0; i <subjectData.length; i++){ %>
+          <tr>
+            <td><%=subjectData[i].id%></td>
+            <td><%=subjectData[i].subject_name%></td>
+          </tr>
+        <% } %>
+
+      </table>
+    </div>
+    
+  </div>
+  </div>
+  </body>
+</html>
