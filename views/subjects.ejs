@@ -90,6 +90,7 @@
           <td><%= subject.subject_name%></td>
           <td>
             <a href='/subjects/edit/<%=subject.id%>'>edit</a> |
+            <a href='/subjects/delete/<%= subject.id %>' onclick="return confirm('delete this subject? \n are you sure?')">delete</a>
           </td>
         </tr>
       <% }) %>

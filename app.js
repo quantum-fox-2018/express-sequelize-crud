@@ -41,6 +41,7 @@ app.post('/teachers/add',function(req,res){
   .catch(err => {res.send(err)})
 })
 
+// handling edit
 app.get('/teachers/edit/:id',function(req,res){
   let id = req.params.id
   model.Teacher.findById(id)
@@ -67,6 +68,19 @@ app.post('/teachers/edit/:id',function(req,res){
   .catch(err => {res.send(err)})
 })
 
+// delete teacher
+app.get('/teachers/delete/:id', (req, res) => {
+  let idObj = req.params.id
+  model.Teacher.destroy({
+    where: {
+      id: idObj
+    }
+  })
+  .then(() => {
+    res.redirect('/teachers')
+  })
+  .catch(err => {res.send(err)})
+})
 // =========================================== Subjects
 // show data subject
 app.get('/subjects',function(req,res){
@@ -122,6 +136,19 @@ app.post('/subjects/edit/:id', (req,res) => {
   .catch(err => {res.send(err)})
 })
 
+// delete subject
+app.get('/subjects/delete/:id', (req, res) => {
+  let idObj = req.params.id
+  model.Subject.destroy({
+    where: {
+      id: idObj
+    }
+  })
+  .then(() => {
+    res.redirect('/subjects')
+  })
+  .catch(err => {res.send(err)})
+})
 // =========================================== Students
 app.get('/students', function (req, res){
   model.Student.findAll()
@@ -176,5 +203,20 @@ app.post('/students/edit/:id', (req,res) => {
   })
   .catch(err => {res.send(err)})
 })
+
+// delete student
+app.get('/students/delete/:id', (req, res) => {
+  let idObj = req.params.id
+  model.Student.destroy({
+    where: {
+      id: idObj
+    }
+  })
+  .then(() => {
+    res.redirect('/students')
+  })
+  .catch(err => {res.send(err)})
+})
+
 
 app.listen(3000)
