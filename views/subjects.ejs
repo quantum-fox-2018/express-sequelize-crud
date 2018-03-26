@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Subjects Data</title>
+</head>
+<body>
+    <h1 style="text-align: center">subjects Data</h1>
+    <a href="/subjects/add-subject" ><h3 style="text-align: center">add subjects</h3></a>
+    <table style="width:100%">
+        <tr>
+            <th>id</th>
+            <th>Subject Name</th>
+        </tr>
+            <% for(let i =0; i< subject_data.length; i++){ %>
+                <tr>
+                    <th><%= subject_data[i].id%></th>
+                    <th><%= subject_data[i].subject_name%></th>
+                    <th><a href="/subjects/edit-subject?id=<%=subject_data[i].id%>">edit</a> | <a href="/subjects/delete-subject?id=<%=subject_data[i].id%>">delete</a></th>
+                </tr>
+            <%}%>
+          </table>
+</body>
+</html>
