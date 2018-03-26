@@ -1,0 +1,17 @@
+<html>
+  <body>
+
+    <h2>Edit Teacher Data</h2>
+
+    <br><br>
+
+    <form action="/subjects/edit/<%=subject.id%>" method="POST">
+      Subject name:<br>
+      <input type="text" name="subjectname" value="<%= subject.subject_name %> ">
+      <br><br>
+      <input type="submit" value="Edit">
+    </form>
+
+
+  </body>
+</html>
