@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Teachers Data</title>
+</head>
+<body>
+    <h1 style="text-align: center">Teachers Data</h1>
+    <a href="/teachers/add-teacher" ><h3 style="text-align: center">add teacher</h3></a>
+    <table style="width:100%">
+        <tr>
+            <th>id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Options</th>
+        </tr>
+            <% for(let i =0; i< teacher_data.length; i++){ %>
+                <tr>
+                    <th><%= teacher_data[i].id%></th>
+                    <th><%= teacher_data[i].first_name%></th>
+                    <th><%= teacher_data[i].last_name%></th>
+                    <th><%= teacher_data[i].email%></th>
+                    <th><a href="/teachers/edit-teacher?id=<%=teacher_data[i].id%>">edit</a> | <a href="/teachers/delete-teacher?id=<%=teacher_data[i].id%>">delete</a></th>
+                </tr>
+            <%}%>
+          </table>
+</body>
+</html>

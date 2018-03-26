@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+    <h1 style="text-align: center">Edit Student Data</h1>
+    <a href="/students"><h3  style="text-align: center">show all data</h3></a>
+    <form action="/students/edit-student?id=<%= student_data.id%>" method="POST">
+        First name:<br>
+        <input type="text" name="first_name" style="width:50%" value="<%= student_data.first_name%>">
+        <br>
+        Last name:<br>
+        <input type="text" name="last_name" style="width:50%" value="<%= student_data.last_name%>">
+        <br>
+        Email:<br>
+        <input type="text" name="email" style="width:50%" value="<%= student_data.email%>">
+        <br>
+        <input type="submit" value="Edit Student">
+    </form>
+</body>
+</html>
