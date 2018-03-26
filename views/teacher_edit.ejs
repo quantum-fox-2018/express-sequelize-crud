@@ -1,0 +1,42 @@
+<html>
+  <body>
+
+    <h2>Edit Teacher Data</h2>
+    <!-- <br>
+    <h3>Data sebelum :</h3>
+    <table>
+      <thead>
+        <th> ID </th>
+        <th> First Name </th>
+        <th> Last Name </th>
+        <th> Email </th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td> <%= teacher.id %> </td>
+          <td> <%= teacher.first_name %> </td>
+          <td> <%= teacher.last_name %> </td>
+          <td> <%= teacher.email %> </td>
+        </tr>
+      </tbody>
+    </table> -->
+
+    <br><br>
+
+    <form action="/teachers/edit/<%=teacher.id%>" method="POST">
+      First name:<br>
+      <input type="text" name="firstname" value="<%= teacher.first_name %> ">
+      <br>
+      Last name:<br>
+      <input type="text" name="lastname" value="<%= teacher.last_name %>">
+      <br>
+      email:<br>
+      <input type="text" name="email" value="<%= teacher.email %>">
+      <br><br>
+      <input type="submit" value="Edit">
+    </form>
+
+
+  </body>
+</html>
