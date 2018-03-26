@@ -1,28 +1,28 @@
 const express   = require('express');
-const students  = express.Router();
+const teachers  = express.Router();
 const models = require('../../models');
 
-students.get('/', (req, res) => {
-  models.Student
+teachers.get('/', (req, res) => {
+  models.Teacher
   .findAll({
     order: [
       ['id', 'ASC']
     ]
   })
-  .then(students => {
-    res.render('students', { students })
+  .then(teachers => {
+    res.render('teachers', { teachers })
   })
   .catch(error => {
     console.log(error.message);
   })
 })
 
-students.get('/add', (req, res) => {
-  res.render('student_add');
+teachers.get('/add', (req, res) => {
+  res.render('teacher_add');
 })
 
-students.post('/add', (req, res) => {
-  models.Student
+teachers.post('/add', (req, res) => {
+  models.Teacher
   .build({
     first_name  : req.body.first_name,
     last_name   : req.body.last_name,
@@ -30,27 +30,27 @@ students.post('/add', (req, res) => {
   })
   .save()
   .then(success => {
-    res.render('student_add_success', { student: req.body });
+    res.render('teacher_add_success', { teacher: req.body });
   })
   .catch(error => {
     console.log(error.message);
   })
 })
 
-students.get('/edit/:id', (req, res) => {
+teachers.get('/edit/:id', (req, res) => {
   let id = req.params.id;
 
-  models.Student
+  models.Teacher
   .findById(id)
-  .then(student => {
-    res.render('student_edit', { student })
+  .then(teacher => {
+    res.render('teacher_edit', { teacher })
   })
   .catch(error => {
     console.log(error.message);
   })
 })
 
-students.post('/edit/:id', (req, res) => {
+teachers.post('/edit/:id', (req, res) => {
   let newData = {
     id          : req.params.id,
     first_name  : req.body.first_name,
@@ -59,25 +59,25 @@ students.post('/edit/:id', (req, res) => {
   }
   console.log(newData);
 
-  models.Student
+  models.Teacher
   .update(newData, { where: { id: newData.id } } )
   .then(success => {
-    res.render('student_edit_success', { student: req.body})
+    res.render('teacher_edit_success', { teacher: req.body})
   })
   .catch(error => {
     console.log(error.message);
   })
 })
 
-students.get('/delete/:id', (req, res) => {
-  models.Student
+teachers.get('/delete/:id', (req, res) => {
+  models.Teacher
   .destroy({ where: { id: req.params.id } })
   .then(success => {
-    res.redirect('/students');
+    res.redirect('/teachers');
   })
   .catch(error => {
     console.log(error.message);
   })
 })
 
-module.exports = students;
+module.exports = teachers;
