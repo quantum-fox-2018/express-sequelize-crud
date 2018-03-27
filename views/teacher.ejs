@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<center>
+<h2>All Teacher Data</h2>
+<h3><a href="/teacher/add">add teacher data</a></h3>
+</center>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Subject</th>
+    <th>Options</th>
+  </tr>
+  <% for (var i = 0; i < info.length; i++) {%>
+  <tr>
+    <td><%= info[i].id %></td>
+    <td><%= info[i].first_name %></td>
+    <td><%= info[i].last_name %></td>
+    <td><%= info[i].email%></td>
+    <td><%= info[i].Subject.subject_name%></td>
+    <td><a href="/teacher/edit/<%= info[i].id %>">Edit</a> | <a href="/teacher/delete/<%= info[i].id %>">Delete</a></td>
+    <td></td>
+  </tr>
+  <% }%>
+  <tr>
+</table>
+
+</body>
+</html>
